@@ -14,4 +14,4 @@ This app is intended to provide a medium to practice the following skills:
 ## Getting Started
 1. Fork the Repo into your own personal Github account
 1. Clone the repo to your local machine
-1. Complete each issue in order and open a PR for each one, referencing the original issue.
+1. Complete each issue in order (sort by oldest to get the correct ordering) and open a PR for each one, referencing the original issue.
