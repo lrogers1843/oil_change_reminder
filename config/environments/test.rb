@@ -21,3 +21,5 @@ Rails.application.configure do
 end
 # Store files locally.
 config.active_storage.service = :test
+
+#test
