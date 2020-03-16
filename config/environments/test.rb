@@ -19,3 +19,5 @@ Rails.application.configure do
   config.action_mailer.asset_host = "http://www.example.com"
   config.active_job.queue_adapter = :inline
 end
+# Store files locally.
+config.active_storage.service = :test
