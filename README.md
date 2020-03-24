@@ -1,7 +1,6 @@
 # Oil change reminder
 
 ## Getting Started
-
 After you have cloned this repo, run this setup script to set up your machine
 with the necessary dependencies to run and test this app:
 
@@ -19,7 +18,6 @@ After setting up, you can run the application using [Heroku Local]:
 [Heroku Local]: https://devcenter.heroku.com/articles/heroku-local
 
 ## Guidelines
-
 Use the following guides for getting things done, programming well, and
 programming in style.
 
@@ -28,9 +26,22 @@ programming in style.
 * [Style](http://github.com/thoughtbot/guides/blob/master/style)
 
 ## Deploying
-
 If you have previously run the `./bin/setup` script,
 you can deploy to staging and production with:
 
     % ./bin/deploy staging
     % ./bin/deploy production
+
+## Process Log
+### Setup with Suspenders Gem
+install then run w/ cli. created app, including the readme sections before Process Log
+### Set Up Active Storage
+rails install -> db migrate to create tables and config updates to utilize Active Storage, the rails system for attaching files to models. 
+### Set Up Models
+Scaffold Image and Notification, no relationship
+### Uploads with Stimulus and Dropzone
+Installed Stimulus and Dropzone (JS Packages), Stimulus built a JS controllers directory.
+### Flag Image for Active Storage attachement
+Image model -> has_one_attached: :picture (creation of picture attachment)
+###  Form Setup
+added file and label field sperately. Why is my form different from tutorial? Figured out I'm on the 'simple_form' gem (from suspenders?). Skipping the "multipart: true" tutorial param. Did whitelist "picture".

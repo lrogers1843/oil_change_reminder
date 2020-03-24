@@ -53,6 +53,6 @@ class ImagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def image_params
-      params.require(:image).permit(:time_stamp, :odometer_reading, :oil_change)
+      params.require(:image).permit(:time_stamp, :odometer_reading, :oil_change, :picture)
     end
 end

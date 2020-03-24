@@ -64,3 +64,5 @@ gem 'factory_bot_rails', group: [:development, :test]
 gem 'delayed_job_active_record'
 gem 'inline_svg'
 gem 'rack-timeout', group: :production
+
+gem 'htmlbeautifier'
