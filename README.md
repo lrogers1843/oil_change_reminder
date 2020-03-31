@@ -41,8 +41,12 @@ rails install -> db migrate to create tables and config updates to utilize Activ
 Scaffold Image and Notification, no relationship
 ### Uploads with Stimulus and Dropzone
 Installed Stimulus and Dropzone (JS Packages), Stimulus built a JS controllers directory.
+https://www.youtube.com/watch?v=fg_8qJ-su6A
 ### Flag Image for Active Storage attachement
 Image model -> has_one_attached: :picture (creation of picture attachment)
 ###  Form Setup
-added file and label field sperately. Why is my form different from tutorial? Figured out I'm on the 'simple_form' gem (from suspenders?). Skipping the "multipart: true" tutorial param. Did whitelist "picture".
-added div with some dropzone classes and stimulus stuff around file field,
+added file and label field seperately. Why is my form different from tutorial? Figured out I'm on the 'simple_form' gem (from suspenders). Skipping the "multipart: true" tutorial param. Did whitelist "picture".
+added div with some dropzone classes and stimulus stuff around file field.
+### Controller Setup
+Copied full JS from tutorial into my controller
+### Style
