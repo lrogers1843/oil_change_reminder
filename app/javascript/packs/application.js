@@ -16,4 +16,4 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import "controllers"
-import '../stylesheets/application.scss'
+import '../stylesheets/application.scss'    

@@ -51,3 +51,5 @@ added div with some dropzone classes and stimulus stuff around file field.
 Copied full JS from tutorial into my controller
 ### Style
 Adding Tailwind via yarn
+config.
+Adding inter typeface
