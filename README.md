@@ -50,4 +50,4 @@ added div with some dropzone classes and stimulus stuff around file field.
 ### Controller Setup
 Copied full JS from tutorial into my controller
 ### Style
-check
+Adding Tailwind via yarn
