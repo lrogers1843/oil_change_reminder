@@ -52,4 +52,15 @@ Copied full JS from tutorial into my controller
 ### Style
 Adding Tailwind via yarn
 config.
-Adding inter typeface
+Adding inter typeface, setup app/views/application/index.html.erb to demonstrate Talwind styles working
+Copied a lot of styles from Stimulus/Dropzone youtube above
+In order to access and use custom css components, added the following to app/javascript/stylesheets/application.scss, since that's the only file referenced in app/javascript/packs/application.js: 
+@import "components/buttons";
+@import "components/forms";
+### API Key
+> Adding HTTParty gem, success
+> Generating API Key on Google Cloud account, success. 
+> Adding Figaro gem for key storage: Install => create  config/application.yml, append  .gitignore
+> Key in config/application.yml
+### Next
+    
