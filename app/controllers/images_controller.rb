@@ -1,6 +1,29 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
+  #api call
+  def call
+    url = "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBszwJvsVsr7JtQcCEuglruK6dcONsDuHM"
+    body = { 
+      requests: [
+        {
+          image: {
+            source: {
+              imageUri: rails_blob_path(@image.picture)
+            }
+          },
+          features: [
+            {
+              type: "TEXT_DETECTION"
+            }
+          ]
+        }
+      ]
+    }
+    #
+    HTTParty.post(url, headers: {"Content-Type" => "application/json; charset=UTF-8"}, body: body.to_json)
+  end
+
   # GET /images
   def index
     @images = Image.all
@@ -22,7 +45,8 @@ class ImagesController < ApplicationController
   # POST /images
   def create
     @image = Image.new(image_params)
-
+    response = call
+    binding.pry
     if @image.save
       redirect_to @image, notice: 'Image was successfully created.'
     else

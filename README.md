@@ -62,5 +62,6 @@ In order to access and use custom css components, added the following to app/jav
 > Generating API Key on Google Cloud account, success. 
 > Adding Figaro gem for key storage: Install => create  config/application.yml, append  .gitignore
 > Key in config/application.yml
-### Next
-    
+### Writing Call
+> drafting in image controller
+
