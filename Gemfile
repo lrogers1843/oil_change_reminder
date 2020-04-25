@@ -21,7 +21,7 @@ gem "title"
 gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 gem "webpacker"
 gem 'httparty'
-gem "figaro"
+gem "aws-sdk-s3", require: false
 
 group :development do
   gem "listen"
