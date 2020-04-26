@@ -51,7 +51,6 @@ class ImagesController < ApplicationController
     @image = Image.new(image_params)
     response = call
     
-    binding.pry
     @image.odometer_reading = response.parsed_response
     if @image.save
       redirect_to @image, notice: 'Image was successfully created.'
