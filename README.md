@@ -43,9 +43,9 @@ Scaffold Image and Notification, no relationship
 Installed Stimulus and Dropzone (JS Packages), Stimulus built a JS controllers directory.
 https://www.youtube.com/watch?v=fg_8qJ-su6A
 ### Flag Image for Active Storage attachement
-Image model -> has_one_attached: :picture (creation of picture attachment)
+Image model -> `has_one_attached: :picture` (creation of picture attachment)
 ###  Form Setup
-added file and label field seperately. Why is my form different from tutorial? Figured out I'm on the 'simple_form' gem (from suspenders). Skipping the "multipart: true" tutorial param. Did whitelist "picture".
+added file and label field seperately. Why is my form different from tutorial? Figured out I'm on the 'simple_form' gem (from suspenders). Skipping the `multipart: true` tutorial param. Did whitelist "picture".
 added div with some dropzone classes and stimulus stuff around file field.
 ### Controller Setup
 Copied full JS from tutorial into my controller
@@ -55,13 +55,22 @@ config.
 Adding inter typeface, setup app/views/application/index.html.erb to demonstrate Talwind styles working
 Copied a lot of styles from Stimulus/Dropzone youtube above
 In order to access and use custom css components, added the following to app/javascript/stylesheets/application.scss, since that's the only file referenced in app/javascript/packs/application.js: 
-@import "components/buttons";
-@import "components/forms";
+`@import "components/buttons";`
+`@import "components/forms";`
 ### API Key
-> Adding HTTParty gem, success
-> Generating API Key on Google Cloud account, success. 
-> Adding Figaro gem for key storage: Install => create  config/application.yml, append  .gitignore
-> Key in config/application.yml
+Adding HTTParty gem, success
+Generating API Key on Google Cloud account, success. 
+Adding to credentials.yml.enc via cli `EDITOR='code --wait' rails credentials:edit`
 ### Writing Call
-> drafting in image controller
-
+drafting in image controller
+took some time to get params right
+### Storage
+Set up amazon: option in storage.yml for Active Record
+Set `config.active_storage.service = :amazon` in config/environments/development.rb
+Added `gem "aws-sdk-s3", require: false`
+Also created new bucket, edited permissions > CORS config
+### Reconfig
+did some troubleshooting bc open server processes causing IO error
+Set deveopment.rb `config.active_job.queue_adapter = :async`
+Set in .env `WEB_CONCURRENCY=2`
+### 

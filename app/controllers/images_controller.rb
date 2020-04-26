@@ -3,13 +3,13 @@ class ImagesController < ApplicationController
 
   #api call
   def call
-    url = "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBszwJvsVsr7JtQcCEuglruK6dcONsDuHM"
+    url = "https://vision.googleapis.com/v1/images:annotate?key=" + Rails.application.credentials.google_api_key
     body = { 
       requests: [
         {
           image: {
             source: {
-              imageUri: rails_blob_path(@image.picture)
+              imageUri: @image.picture.service_url
             }
           },
           features: [
@@ -22,6 +22,10 @@ class ImagesController < ApplicationController
     }
     #
     HTTParty.post(url, headers: {"Content-Type" => "application/json; charset=UTF-8"}, body: body.to_json)
+  end
+#extract odometer reading
+  def extract 
+
   end
 
   # GET /images
@@ -46,7 +50,9 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     response = call
+    
     binding.pry
+    @image.odometer_reading = response.parsed_response
     if @image.save
       redirect_to @image, notice: 'Image was successfully created.'
     else
