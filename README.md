@@ -83,4 +83,5 @@ setup smtp domain on sendgrid.com
 created config/initializers/smtp.rb
 added sendgrid pw and username with `EDITOR='code --wait' rails credentials:edit`
 added verified gmail as "from" in app/mailers/application_mailer.rb
-
+### Refactor
+moved api code into app/models/process_image.rb
