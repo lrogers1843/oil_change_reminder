@@ -25,7 +25,7 @@ class ImagesController < ApplicationController
     ProcessImage.new(@image).process
     NotificationMailer.with(image: @image).first_notification.deliver_now
     if @image.save
-      redirect_to @image, notice: 'Image was successfully created.'
+      redirect_to @image, notice: "Thanks for the update. You now have #{ProcessImage.new(@image).current_oil_mileage} miles on your oil. You should change every 7000!"
     else
       render :new
     end
