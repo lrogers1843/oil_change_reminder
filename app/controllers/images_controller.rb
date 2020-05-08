@@ -22,16 +22,11 @@ class ImagesController < ApplicationController
   # POST /images
   def create
     @image = Image.new(image_params)
-    ProcessImage.new(@image).process
-    NotificationMailer.with(image: @image).first_notification.deliver_now
-    if @image.save
-      redirect_to @image, notice: "Thanks for the update. You now have #{ProcessImage.new(@image).current_oil_mileage} miles on your oil. You should change every 7000!"
+    if @image.save #success is truthy, fail is falsey
+      redirect_to @image, notice: "Thanks for the update"
     else
       render :new
     end
-  # the following allows us to pull up more detail on an error if it occurs.  
-  # rescue => error
-  # binding.pry
   end
 
   # PATCH/PUT /images/1

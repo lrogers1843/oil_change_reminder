@@ -6,13 +6,23 @@
 </p>
 
 <p>
+  <strong>Oil change:</strong>
+  <%= @image.oil_change %>
+</p>
+
+<p>
   <strong>Odometer reading:</strong>
   <%= @image.odometer_reading %>
 </p>
 
 <p>
-  <strong>Oil change:</strong>
-  <%= @image.oil_change %>
+  <strong>Last Change:</strong>
+  <%= @image.last_change %>
+</p>
+
+<p>
+  <strong>Oil Mileage:</strong>
+  <%= @image.oil_mileage %>
 </p>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |

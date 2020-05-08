@@ -52,7 +52,7 @@ Copied full JS from tutorial into my controller
 ### Style
 Adding Tailwind via yarn
 config.
-Adding inter typeface, setup app/views/application/index.html.erb to demonstrate Talwind styles working
+Adding inter typeface, setup app/views/application/index.html.erb to demonstrate Tailwind styles working
 Copied a lot of styles from Stimulus/Dropzone youtube above
 In order to access and use custom css components, added the following to app/javascript/stylesheets/application.scss, since that's the only file referenced in app/javascript/packs/application.js: 
 `@import "components/buttons";`
@@ -85,3 +85,17 @@ added sendgrid pw and username with `EDITOR='code --wait' rails credentials:edit
 added verified gmail as "from" in app/mailers/application_mailer.rb
 ### Refactor
 moved api code into app/models/process_image.rb
+### Mileage Notice on Upload
+created new column on Image called "last_change"
+added an write to that column in ProcessImage#process
+added a method ProcessImage#current_oil_mileage to provide into to user after image save
+
+adding status column to image table
+new job in app/jobs/image_processing_job.rb to hold all of processing steps, called in model instead of controller
+added oil miles column to image table
+
+### To-Do
+provide response for photos where odo reading unclear
+figure out why clicking create with incomplete upload causes ActiveSupport::MessageVerifier::InvalidSignature error
+why do notifications duplicate
+how to fix time stamp?
