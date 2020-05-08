@@ -1,29 +1,38 @@
-<p id="notice"><%= notice %></p>
-
+<% if @image.processing_status != "completed" %>
+    <p>Your report is still processing, please click <%= link_to 'HERE', @image %> to check on it
+<% else %>
 <p>
-  <strong>Time stamp:</strong>
-  <%= @image.time_stamp %>
+  <strong>Oil Mileage:</strong>
+  <strong><%= @image.oil_mileage %></strong>
+</p>
+<p>
+<strong>You should change your oil every 7000 miles!</strong>
 </p>
 
 <p>
-  <strong>Oil change:</strong>
+  Date:
+  <%= @image.time_stamp.strftime("%m/%d/%y") %>
+</p>
+
+<p>
+  Oil Change:
   <%= @image.oil_change %>
 </p>
 
 <p>
-  <strong>Odometer reading:</strong>
+  Odometer reading:
   <%= @image.odometer_reading %>
 </p>
 
 <p>
-  <strong>Last Change:</strong>
+  Last Oil Change:
   <%= @image.last_change %>
 </p>
 
-<p>
-  <strong>Oil Mileage:</strong>
-  <%= @image.oil_mileage %>
-</p>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+
+<%= link_to 'History', images_path %> |
+<%= link_to 'New', new_image_path %>
+
+<% end %>
+

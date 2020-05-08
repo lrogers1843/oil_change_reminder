@@ -89,13 +89,18 @@ moved api code into app/models/process_image.rb
 created new column on Image called "last_change"
 added an write to that column in ProcessImage#process
 added a method ProcessImage#current_oil_mileage to provide into to user after image save
-
-adding status column to image table
-new job in app/jobs/image_processing_job.rb to hold all of processing steps, called in model instead of controller
+### Putting Image Processing in Job
+adding status attribute to images, with validations and default val
 added oil miles column to image table
+new job in app/jobs/image_processing_job.rb to hold all of processing steps, called in model instead of controller
+### UI Design
+tweaked linkes on views, reduced form to essential inputs, styled submit button, set timestamp default in model. 
+
+
 
 ### To-Do
 provide response for photos where odo reading unclear
 figure out why clicking create with incomplete upload causes ActiveSupport::MessageVerifier::InvalidSignature error
 why do notifications duplicate
 how to fix time stamp?
+if "create" without even starting an upload, whole app breaks until record deleted

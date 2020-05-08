@@ -5,6 +5,7 @@ class Image < ApplicationRecord
 
 	validates :processing_status, inclusion: {in: PROCESSING_STATUSES} #requires that the record have non-nil value here
 	attribute :processing_status, default: "queued" #applies to new but not existing records created from rails
+	attribute :time_stamp, default: Time.now
 
 	after_commit :process_image, on: :create #this waits until after the db has confirmed that it's completed the save action. runs on create not update
 

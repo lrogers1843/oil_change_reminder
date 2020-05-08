@@ -1,13 +1,7 @@
 <%= simple_form_for(@image) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <div class="mb-6">
-    <%= f.input :time_stamp %>
-  </div>
-  <div class="mb-6">
-    <%= f.input :odometer_reading %>
-  </div>
-  <div class="mb-6">
+  <div class="mb-6 content-center">
     <%= f.input :oil_change %>
   </div>
   <div class="mb-6">
@@ -21,6 +15,6 @@
     </div>
   </div>
   <div class="mb-6">
-    <%= f.submit  class: "btn-default btn" %>
+    <%= f.submit  class: "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
   </div>
 <% end %>
