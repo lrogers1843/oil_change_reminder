@@ -96,9 +96,20 @@ new job in app/jobs/image_processing_job.rb to hold all of processing steps, cal
 ### UI Design
 tweaked links on views, reduced form to essential inputs, styled submit button, set timestamp default in model. 
 ### Deploy
+(https://www.youtube.com/watch?v=lp_EEVWtObs)
 installed heroku cli and logged in
 config/database.yml adapter and db-url looks ok although syntax a bit diff. .fetch is diff, seems nbd
 did: heroku apps:create oil-change-reminder
+added RAILS_MASTER_KEY on heroku web dashboard
+
+error is  
+    Running: rake assets:precompile
+    rake aborted!
+    KeyError: key not found: "SMTP_ADDRESS"
+removed # config.action_mailer.smtp_settings = SMTP_SETTINGS from production.rb bc appears covered here: config/initializers/smtp.rb
+now commenting out that ENVvar in app.json
+
+
 
 
 
