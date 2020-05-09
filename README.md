@@ -108,6 +108,11 @@ error is
     KeyError: key not found: "SMTP_ADDRESS"
 removed # config.action_mailer.smtp_settings = SMTP_SETTINGS from production.rb bc appears covered here: config/initializers/smtp.rb
 now commenting out that ENVvar in app.json
+commentiong out all of config/smtp.rb
+
+KeyError: key not found: "APPLICATION_HOST"
+commted out lines 3-7 in config/environments/production.rb
+
 
 
 
