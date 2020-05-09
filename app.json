@@ -1,8 +1,8 @@
 {
   "env": {
-    // "SMTP_ADDRESS": {
-    //   "required": true
-    // },
+    "SMTP_ADDRESS": {
+      "required": true
+    },
     "SMTP_DOMAIN": {
       "required": true
     },

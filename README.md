@@ -100,18 +100,19 @@ tweaked links on views, reduced form to essential inputs, styled submit button, 
 installed heroku cli and logged in
 config/database.yml adapter and db-url looks ok although syntax a bit diff. .fetch is diff, seems nbd
 did: heroku apps:create oil-change-reminder
-added RAILS_MASTER_KEY on heroku web dashboard
+added RAILS_MASTER_KEY on heroku web dashboard (https://www.viget.com/articles/storing-secret-credentials-in-rails-5-2-and-up/)
 
 error is  
     Running: rake assets:precompile
     rake aborted!
     KeyError: key not found: "SMTP_ADDRESS"
 removed # config.action_mailer.smtp_settings = SMTP_SETTINGS from production.rb bc appears covered here: config/initializers/smtp.rb
-now commenting out that ENVvar in app.json
 commentiong out all of config/smtp.rb
+    KeyError: key not found: "APPLICATION_HOST"
+commented out all mentions in config/environments/production.rb
+DEPLOY COMPLETE
 
-KeyError: key not found: "APPLICATION_HOST"
-commted out lines 3-7 in config/environments/production.rb
+ran heroku run rails db:prepare
 
 
 
