@@ -114,6 +114,9 @@ DEPLOY COMPLETE
 
 ran heroku run rails db:prepare
 
+works, but need to fix css? and move production storage to s3
+set: config.active_storage.service = :amazon
+
 
 
 
