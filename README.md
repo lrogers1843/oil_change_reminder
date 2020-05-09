@@ -94,9 +94,20 @@ adding status attribute to images, with validations and default val
 added oil miles column to image table
 new job in app/jobs/image_processing_job.rb to hold all of processing steps, called in model instead of controller
 ### UI Design
-tweaked linkes on views, reduced form to essential inputs, styled submit button, set timestamp default in model. 
+tweaked links on views, reduced form to essential inputs, styled submit button, set timestamp default in model. 
+### Deploy
+installed heroku cli and logged in
+config/database.yml adapter and db-url looks ok although syntax a bit diff. .fetch is diff, seems nbd
+did: heroku apps:create oil-change-reminder
 
 
+
+heroku seems to look for .env locally and allow easy push to deplyed app
+procfile defines processes that are run, mine lacks db server?
+
+Goal: run heroku local with supenders and then push online
+https://devcenter.heroku.com/articles/heroku-local
+https://devcenter.heroku.com/articles/getting-started-with-rails6
 
 ### To-Do
 provide response for photos where odo reading unclear
