@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     if @image.save #success is truthy, fail is falsey
-      redirect_to @image, notice: "Thanks for the update"
+      redirect_to @image
     else
       render :new
     end
