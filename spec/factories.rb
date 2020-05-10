@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :user do
+    
+  end
+
   factory :notification do
     scheduled_time { "2020-03-19 20:25:24" }
     message { "MyString" }

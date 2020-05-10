@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
 
   # GET /images
   def index
-    @images = Image.all
+    @images = Image.where(oil_change: "true", user_id: current_user)
   end
 
   # GET /images/1
@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
 
   # POST /images
   def create
-    @image = Image.new(image_params)
+    @image = Image.new(image_params.merge(user: current_user))
     if @image.save #success is truthy, fail is falsey
       redirect_to @image
     else

@@ -22,6 +22,7 @@ gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 gem "webpacker"
 gem 'httparty'
 gem "aws-sdk-s3", require: false
+gem 'devise'
 
 group :development do
   gem "listen"

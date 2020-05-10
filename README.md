@@ -98,8 +98,16 @@ new job in app/jobs/image_processing_job.rb to hold all of processing steps, cal
 - hide button until photo uploaded (f.submit style: "display: none", id: "create") and lines 82+83 in app/javascript/controllers/dropzone_controller.js
 - did some tailwinds css, all work in views: new, show, form, index
 ### Users
-adding with devise
-
+adding with devise: 
+https://medium.com/swlh/https-medium-com-melee-santiago-using-devise-gem-to-handle-authentication-in-rails-app-538bbd231dde
+https://github.com/heartcombo/devise#getting-started
+did basic setup
+add following to app/controllers/application_controller.rb: before_action :authenticate_user!
+user model: has many image, image model: belongs to user
+migration add_user_to_image user:references
+image controller: @image = Image.new(image_params.merge(user: current_user))
+updated def last_oil_change_mileage
+image controller: def index @images = Image.where(oil_change: "true", user_id: current_user)
 
 
 ### Deploy
@@ -125,3 +133,4 @@ have to add <%= stylesheet_pack_tag 'application' %> to app/views/layouts/applic
 ### To-Do
 provide response for photos where odo reading unclear
 only trigger reminders from oil change
+allow user car name and oil interval inputs

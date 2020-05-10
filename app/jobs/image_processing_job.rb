@@ -10,13 +10,14 @@ class ImageProcessingJob < ApplicationJob
 		@image.save
 		# @image.assign_attributes(processing_status: "completed", odometer_reading: odometer_reading,  last_change: last_oil_change_mileage, oil_mileage: current_oil_mileage)
 		# NotificationMailer.with(image: @image).first_notification.deliver_now
-		NotificationMailer.with(image: @image).first_notification.deliver_later(wait: 5.seconds)
+		# NotificationMailer.with(image: @image).first_notification.deliver_later(wait: 5.seconds)
 	end
 	
 	def process 
 		@image.odometer_reading = odometer_reading
 		@image.last_change = last_oil_change_mileage
 		@image.oil_mileage = current_oil_mileage
+		binding.pry
 	end
 
 	def response_text
@@ -59,15 +60,16 @@ class ImageProcessingJob < ApplicationJob
 	end
 
 	def last_oil_change_mileage
+		#oil changes for user
+		oil_changes = Image.where(oil_change: "true", user_id: @image.user_id)
 		#if image is an oil change
 		if @image.oil_change == true
 			return @image.odometer_reading
 		#if db lacks images or lacks oil changes
-		elsif Image.where(oil_change: "true").count == 0
+		elsif oil_changes.count == 0
 			return 0
 		end
-		#find last oil change record mileage
-	  oil_changes = Image.where(oil_change: "true")
+	  #find last oil change mileage
 	  last_oil_change_mileage = oil_changes.where(odometer_reading: oil_changes.maximum('odometer_reading')).to_a[0].odometer_reading
 	end
 

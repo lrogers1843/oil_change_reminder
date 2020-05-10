@@ -1,5 +1,6 @@
 class Image < ApplicationRecord
 	has_one_attached :picture
+	belongs_to :user
 	
 	PROCESSING_STATUSES = %w(queued processing completed) #this constant really just here to use in the validation below. Could be used for dropdown form. just a very common thing to re-use
 
