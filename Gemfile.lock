@@ -295,6 +295,10 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
+    skylight (4.2.3)
+      skylight-core (= 4.2.3)
+    skylight-core (4.2.3)
+      activesupport (>= 4.2.0)
     spring (2.1.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -381,6 +385,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   simplecov
+  skylight
   spring
   spring-commands-rspec
   sprockets (>= 3.0.0)
