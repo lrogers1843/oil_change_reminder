@@ -79,6 +79,8 @@ class DirectUploadController {
             } else {
                 this.hiddenInput.value = attributes.signed_id;
                 this.emitDropzoneSuccess();
+                var btn = document.getElementById("create");
+                btn.hidden = false;
             }
         });
     }
@@ -149,7 +151,3 @@ function createDropZone(controller) {
         autoQueue: false
     });
 }
-
-
-
-

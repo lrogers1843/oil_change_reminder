@@ -59,10 +59,15 @@ class ImageProcessingJob < ApplicationJob
 	end
 
 	def last_oil_change_mileage
+		#if image is an oil change
 		if @image.oil_change == true
 			return @image.odometer_reading
+		#if db lacks images or lacks oil changes
+		elsif Image.where(oil_change: "true").count == 0
+			return 0
 		end
-		oil_changes = Image.where(oil_change: "true")
+		#find last oil change record mileage
+	  oil_changes = Image.where(oil_change: "true")
 	  last_oil_change_mileage = oil_changes.where(odometer_reading: oil_changes.maximum('odometer_reading')).to_a[0].odometer_reading
 	end
 

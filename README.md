@@ -94,51 +94,29 @@ adding status attribute to images, with validations and default val
 added oil miles column to image table
 new job in app/jobs/image_processing_job.rb to hold all of processing steps, called in model instead of controller
 ### UI Design
-tweaked links on views, reduced form to essential inputs, styled submit button, set timestamp default in model. 
+- tweaked links on views, reduced form to essential inputs, styled submit button, set timestamp default in model. 
+- hide button until photo uploaded (f.submit  hidden: true, id: "create") lines 82+83 in app/javascript/controllers/dropzone_controller.js
+f.submit  hidden: true, id: "create"
 ### Deploy
 (https://www.youtube.com/watch?v=lp_EEVWtObs)
 installed heroku cli and logged in
 config/database.yml adapter and db-url looks ok although syntax a bit diff. .fetch is diff, seems nbd
 did: heroku apps:create oil-change-reminder
 added RAILS_MASTER_KEY on heroku web dashboard (https://www.viget.com/articles/storing-secret-credentials-in-rails-5-2-and-up/)
-
-error is  
+error on deploy:  
     Running: rake assets:precompile
     rake aborted!
-    KeyError: key not found: "SMTP_ADDRESS"
-removed # config.action_mailer.smtp_settings = SMTP_SETTINGS from production.rb bc appears covered here: config/initializers/smtp.rb
-commentiong out all of config/smtp.rb
     KeyError: key not found: "APPLICATION_HOST"
 commented out all mentions in config/environments/production.rb
-DEPLOY COMPLETE
-
+DEPLOY SUCCEEDED
 ran heroku run rails db:prepare
-
-works, but need to and move production storage to s3
+production storage to s3?
 set: config.active_storage.service = :amazon
-SUCCESS
-
-job queueing?
+fix job queueing?
 toggle worker dyno in webdashboard - resources
-
 fix css?
-
-
-
-
-
-
-
-heroku seems to look for .env locally and allow easy push to deplyed app
-procfile defines processes that are run, mine lacks db server?
-
-Goal: run heroku local with supenders and then push online
-https://devcenter.heroku.com/articles/heroku-local
-https://devcenter.heroku.com/articles/getting-started-with-rails6
+have to add <%= stylesheet_pack_tag 'application' %> to app/views/layouts/application.html.erb becasue config/webpacker.yml has extract_css: true in production
 
 ### To-Do
 provide response for photos where odo reading unclear
-figure out why clicking create with incomplete upload causes ActiveSupport::MessageVerifier::InvalidSignature error
-why do notifications duplicate
-how to fix time stamp?
-if "create" without even starting an upload, whole app breaks until record deleted
+only trigger reminders from oil change
