@@ -96,6 +96,11 @@ new job in app/jobs/image_processing_job.rb to hold all of processing steps, cal
 ### UI Design
 - tweaked links on views, reduced form to essential inputs, styled submit button, set timestamp default in model. 
 - hide button until photo uploaded (f.submit style: "display: none", id: "create") and lines 82+83 in app/javascript/controllers/dropzone_controller.js
+- did some tailwinds css, all work in views: new, show, form, index
+### Users
+adding with devise
+
+
 
 ### Deploy
 (https://www.youtube.com/watch?v=lp_EEVWtObs)
