@@ -1,7 +1,7 @@
 <style>
 p    {display: inline-block;}
 </style>
-<div class="flex justify-center p-2">
+<div class="flex justify-center p-5">
 <div class="max-w-2xl inline-flex flex-col">
 <% if @image.processing_status != "completed" %>
     <p>Your report is still processing, please click <%= link_to 'HERE', @image %> to check on it
