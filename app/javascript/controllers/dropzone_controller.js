@@ -80,7 +80,7 @@ class DirectUploadController {
                 this.hiddenInput.value = attributes.signed_id;
                 this.emitDropzoneSuccess();
                 var btn = document.getElementById("create");
-                btn.hidden = false;
+                btn.removeAttribute("style");
             }
         });
     }
