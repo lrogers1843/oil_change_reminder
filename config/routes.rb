@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'users'
-  # :skip => [:registrations, :sessions]
-
-  # as user do
-  # # Registrations
-  # get   '/signup'   => 'users/registrations#new', as: :new_user_registration
-  # post  '/signup'   => 'users/registrations#create', as: :user_registration
-  # end
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
+  }
   resources :notifications
   resources :images
   root to: "application#index"
