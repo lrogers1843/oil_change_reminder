@@ -111,7 +111,6 @@ image controller: @image = Image.new(image_params.merge(user: current_user))
 updated def last_oil_change_mileage
 image controller: def index @images = Image.where(oil_change: "true", user_id: current_user)
 
-
 ### Deploy
 (https://www.youtube.com/watch?v=lp_EEVWtObs)
 installed heroku cli and logged in
@@ -131,6 +130,10 @@ fix job queueing?
 toggle worker dyno in webdashboard - resources
 fix css?
 have to add <%= stylesheet_pack_tag 'application' %> to app/views/layouts/application.html.erb becasue config/webpacker.yml has extract_css: true in production
+
+### Redeploy
+After users set up locally, redeploy DON'T FORGET TO GIT ADD WHEN YOU RUN A GE LIKE DEVISE BC THE RESOUrCES IT GENERATES A NEW TO THE REPO!!! 
+once that's done, run heroku run rails db:prepare
 
 ### To-Do
 provide response for photos where odo reading unclear
