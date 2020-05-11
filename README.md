@@ -101,6 +101,8 @@ new job in app/jobs/image_processing_job.rb to hold all of processing steps, cal
 adding with devise: 
 https://medium.com/swlh/https-medium-com-melee-santiago-using-devise-gem-to-handle-authentication-in-rails-app-538bbd231dde
 https://github.com/heartcombo/devise#getting-started
+https://altalogy.com/blog/rails-6-user-accounts-with-3-types-of-roles/
+https://stackoverflow.com/questions/41972575/generating-devise-controllers-rails-devise
 did basic setup
 add following to app/controllers/application_controller.rb: before_action :authenticate_user!
 user model: has many image, image model: belongs to user
