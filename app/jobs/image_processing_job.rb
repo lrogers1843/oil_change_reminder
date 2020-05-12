@@ -5,6 +5,7 @@ class ImageProcessingJob < ApplicationJob
 		@image = Image.find_by(id: image_id)
 		@image.update_attributes(processing_status: "processing") #update w/o save method (which would trigger loop)
 		@image.processing_status = "processing"
+		binding.pry
 		process
 		@image.processing_status = "completed"
 		@image.save
@@ -20,7 +21,12 @@ class ImageProcessingJob < ApplicationJob
 	end
 
 	def response_text
-		@response_text ||= google_api_response.parsed_response["responses"][0]["fullTextAnnotation"]["text"]
+		@response_text ||= 
+		if google_api_response.parsed_response["responses"][0].empty?
+			"empty response"
+		else
+		    google_api_response.parsed_response["responses"][0]["fullTextAnnotation"]["text"]
+		end
 	end
 
 	def miles_index
@@ -29,7 +35,7 @@ class ImageProcessingJob < ApplicationJob
 
 	def odometer_reading
 		@odometer_reading ||= 
-		if miles_index.nil?
+		if  miles_index.nil?
 			1000000
 		else
 			response_text[miles_index-7..miles_index-2] 
