@@ -144,6 +144,7 @@ once that's done, run heroku run rails db:prepare to include db mods that came f
 
 ### To-Do
 For odo parse challenges, maybe require a crop down to a single number. 
+allow user logout
 turn create button white
 only trigger reminders from oil change
 allow user car name and oil interval inputs

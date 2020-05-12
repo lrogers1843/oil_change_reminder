@@ -5,7 +5,6 @@ class ImageProcessingJob < ApplicationJob
 		@image = Image.find_by(id: image_id)
 		@image.update_attributes(processing_status: "processing") #update w/o save method (which would trigger loop)
 		@image.processing_status = "processing"
-		binding.pry
 		process
 		@image.processing_status = "completed"
 		@image.save
