@@ -131,11 +131,21 @@ toggle worker dyno in webdashboard - resources
 fix css?
 have to add <%= stylesheet_pack_tag 'application' %> to app/views/layouts/application.html.erb becasue config/webpacker.yml has extract_css: true in production
 
+put the asset host mentions back in production.rb, do provide those to heroku but not via rails configuration bc don't want to track all those mentions down to tweak. can skip smtp and just do these
+ASSET_HOST: siteURL.herokuapp.com
+APPLICATION_HOST: siteURL.herokuapp.com
+AUTO_MIGRATE_DB: true
+
 ### Redeploy
-After users set up locally, redeploy DON'T FORGET TO GIT ADD WHEN YOU RUN A GE LIKE DEVISE BC THE RESOUrCES IT GENERATES A NEW TO THE REPO!!! 
-once that's done, run heroku run rails db:prepare
+After users set up locally, redeploy.
+DON'T FORGET TO GIT ADD WHEN YOU RUN A GEM LIKE DEVISE BC THE RESOURCES IT GENERATES ARE NEW TO THE REPO!!! 
+once that's done, run heroku run rails db:prepare to include db mods that came from user table creation/association
+
 
 ### To-Do
-provide response for photos where odo reading unclear
+For odo parse challenges, maybe require a crop down to a single number. 
+turn create button white
 only trigger reminders from oil change
 allow user car name and oil interval inputs
+send notices to user email
+pull photo date, only use upload date as alternate, and label as such

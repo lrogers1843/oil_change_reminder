@@ -4,7 +4,10 @@ p    {display: inline-block;}
 <div class="flex justify-center p-5">
 <div class="max-w-2xl inline-flex flex-col">
 <% if @image.processing_status != "completed" %>
-    <p>Your report is still processing, please click <%= link_to 'HERE', @image %> to check on it
+    <p>Your report is still processing, please click <%= link_to 'HERE', @image %> to check on it</p>
+<% elsif @image.odometer_reading == 1000000 %>
+<p>We couldn't find the odometer in your image, but we to hope to support that format in the future. </p><br/>
+<p>Click <%= link_to 'HERE', new_image_path %> to try another </p>
 <% else %>
 <p>
   <strong>Oil Mileage:</strong>

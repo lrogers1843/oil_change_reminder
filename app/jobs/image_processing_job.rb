@@ -5,6 +5,7 @@ class ImageProcessingJob < ApplicationJob
 		@image = Image.find_by(id: image_id)
 		@image.update_attributes(processing_status: "processing") #update w/o save method (which would trigger loop)
 		@image.processing_status = "processing"
+		binding.pry
 		process
 		@image.processing_status = "completed"
 		@image.save
@@ -14,8 +15,8 @@ class ImageProcessingJob < ApplicationJob
 	end
 	
 	def process 
-		@image.odometer_reading = odometer_reading
-		@image.last_change = last_oil_change_mileage
+		@image.odometer_reading = odometer_reading 
+		@image.last_change = last_oil_change_mileage 
 		@image.oil_mileage = current_oil_mileage
 	end
 
@@ -28,7 +29,12 @@ class ImageProcessingJob < ApplicationJob
 	end
 
 	def odometer_reading
-		@odometer_reading ||= response_text[miles_index-7..miles_index-2] 
+		@odometer_reading ||= 
+		if miles_index.nil?
+			1000000
+		else
+			response_text[miles_index-7..miles_index-2] 
+		end
 	end
 
 	def url
