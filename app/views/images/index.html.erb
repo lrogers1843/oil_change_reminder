@@ -10,7 +10,33 @@
     </tr>
   </thead>
   <tbody>
-    <% @images.each do |image| %>
+    <% @images.where(oil_change: true).each do |image| %>
+      <tr>
+        <td><%= image.time_stamp.strftime("%m/%d/%y") %></td>
+        <td><%= image.odometer_reading %></td>
+        <td><%= image.oil_change %></td>
+        <!--
+        <td><%= link_to 'View Image', image.picture %></td>
+        <td><%= link_to 'Show', image %></td>
+        <td><%= link_to 'Edit', edit_image_path(image) %></td>
+        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h1 class="text-3xl font-bold text-black mb-6">Past Oil Checkups</h1>
+  <table>
+  <thead>
+    <tr>
+      <th>Time stamp</th>
+      <th>Odometer reading</th>
+      <th>Oil change</th>
+      <!-- <th colspan="1"></th> %> -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @images.where(oil_change: false).each do |image| %>
       <tr>
         <td><%= image.time_stamp.strftime("%m/%d/%y") %></td>
         <td><%= image.odometer_reading %></td>

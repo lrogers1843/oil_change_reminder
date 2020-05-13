@@ -14,7 +14,6 @@ class ImageProcessingJob < ApplicationJob
 	end
 	
 	def process 
-		binding.pry
 		@image.odometer_reading = odometer_reading 
 		@image.last_change = last_oil_change_mileage 
 		@image.oil_mileage = current_oil_mileage

@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
 
   # GET /images
   def index
-    @images = Image.where(oil_change: "true", user_id: current_user)
+    @images = Image.where(user_id: current_user)
   end
 
   # GET /images/1
