@@ -145,9 +145,9 @@ once that's done, run heroku run rails db:prepare to include db mods that came f
 ### To-Do
 restyle user views
 allow user logout
-For odo parse challenges, maybe require a crop down to a single number. 
 turn create button white
 only trigger reminders from oil change
 allow user car name and oil interval inputs
 send notices to user email
 pull photo date, only use upload date as alternate, and label as such
+handle low miles case (<500?)

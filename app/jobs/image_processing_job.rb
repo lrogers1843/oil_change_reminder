@@ -14,6 +14,7 @@ class ImageProcessingJob < ApplicationJob
 	end
 	
 	def process 
+		binding.pry
 		@image.odometer_reading = odometer_reading 
 		@image.last_change = last_oil_change_mileage 
 		@image.oil_mileage = current_oil_mileage
@@ -21,23 +22,21 @@ class ImageProcessingJob < ApplicationJob
 
 	def response_text
 		@response_text ||= 
-		if google_api_response.parsed_response["responses"][0].empty?
+		if google_api_response.parsed_response["responses"][0].empty? #handles the case where there is no text returned
 			"empty response"
 		else
 		    google_api_response.parsed_response["responses"][0]["fullTextAnnotation"]["text"]
 		end
 	end
 
-	def miles_index
-		@miles_index ||= response_text.index("miles")
-	end
-
 	def odometer_reading
 		@odometer_reading ||= 
-		if  miles_index.nil?
+		if  response_text == "empty response" #easy to find and address empty images like this
 			1000000
 		else
-			response_text[miles_index-7..miles_index-2] 
+			j_num_strings = response_text.scan(/\D(\d\d*)\D/) #regex + capture to pull all nums as strings
+			j_nums_ints = j_num_strings.map { |n| n[0].to_i }
+			j_nums_ints.max
 		end
 	end
 
