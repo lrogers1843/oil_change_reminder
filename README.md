@@ -141,8 +141,14 @@ After users set up locally, redeploy.
 DON'T FORGET TO GIT ADD WHEN YOU RUN A GEM LIKE DEVISE BC THE RESOURCES IT GENERATES ARE NEW TO THE REPO!!! 
 once that's done, run heroku run rails db:prepare to include db mods that came from user table creation/association
 
+### Photo Labels
+In app/jobs/image_processing_job.rb
+check if upload matches the "vehicle" check in google
+(https://cloud.google.com/vision/docs/labels)
 
 ### To-Do
+check if upload matches the "odometer" check in google
+(https://cloud.google.com/vision/docs/labels)
 restyle user views
 allow user logout
 turn create button white
@@ -151,3 +157,4 @@ allow user car name and oil interval inputs
 send notices to user email
 pull photo date, only use upload date as alternate, and label as such
 handle low miles case (<500?)
+

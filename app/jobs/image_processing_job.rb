@@ -14,6 +14,7 @@ class ImageProcessingJob < ApplicationJob
 	end
 	
 	def process 
+		binding.pry
 		@image.odometer_reading = odometer_reading 
 		@image.last_change = last_oil_change_mileage 
 		@image.oil_mileage = current_oil_mileage
@@ -21,17 +22,19 @@ class ImageProcessingJob < ApplicationJob
 
 	def response_text
 		@response_text ||= 
-		if google_api_response.parsed_response["responses"][0].empty? #handles the case where there is no text returned
+		if google_text_api_response.parsed_response["responses"][0].empty? #handles the case where there is no text returned
 			"empty response"
 		else
-		    google_api_response.parsed_response["responses"][0]["fullTextAnnotation"]["text"]
+		    google_text_api_response.parsed_response["responses"][0]["fullTextAnnotation"]["text"]
 		end
 	end
 
 	def odometer_reading
 		@odometer_reading ||= 
-		if  response_text == "empty response" #easy to find and address empty images like this
+		if response_text == "empty response" #easy to find and address empty images like this
 			1000000
+		elsif @image_label_check == false #if image not vehicle or gauge
+			1000001
 		else
 			j_num_strings = response_text.scan(/\D(\d\d*)\D/) #regex + capture to pull all nums as strings
 			j_nums_ints = j_num_strings.map { |n| n[0].to_i }
@@ -39,11 +42,11 @@ class ImageProcessingJob < ApplicationJob
 		end
 	end
 
-	def url
+	def api_url
 		"https://vision.googleapis.com/v1/images:annotate?key=" + Rails.application.credentials.google_api_key
 	end
 
-	def body
+	def text_body
 		{ 
 			requests: [
 				{
@@ -62,8 +65,47 @@ class ImageProcessingJob < ApplicationJob
 		}
 	end
 
-	def google_api_response
-		@google_api_response ||= HTTParty.post(url, headers: {"Content-Type" => "application/json; charset=UTF-8"}, body: body.to_json)
+	def label_body
+		{
+			"requests": [
+			  {
+				"image": {
+					source: {
+						imageUri: @image.picture.service_url
+					}
+				},
+				"features": [
+					{
+						"maxResults": 10,
+						"type": "LABEL_DETECTION"
+					  }
+				]
+			  }
+			]
+		  }
+	end
+
+	def google_text_api_response
+		@google_text_api_response ||= HTTParty.post(api_url, headers: {"Content-Type" => "application/json; charset=UTF-8"}, body: text_body.to_json)
+	end
+
+	def google_label_api_response
+		@google_label_api_response ||= HTTParty.post(api_url, headers: {"Content-Type" => "application/json; charset=UTF-8"}, body: label_body.to_json)
+	end
+
+	def image_label_check
+		@image_label_check ||= image_label_check_process
+		
+	end
+
+	def image_label_check_process
+		labels_array = google_label_api_response.parsed_response["responses"][0]["labelAnnotations"]
+        label_check = []
+        labels_array.each do |label|
+            label_check.push(label.has_value?("Vehicle"))
+            label_check.push(label.has_value?("Gauge"))
+		end
+		return label_check.include?(true)
 	end
 
 	def last_oil_change_mileage

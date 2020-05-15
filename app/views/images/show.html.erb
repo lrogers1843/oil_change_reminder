@@ -8,6 +8,9 @@ p    {display: inline-block;}
 <% elsif @image.odometer_reading == 1000000 %>
 <p>We couldn't find the odometer in your image, but we to hope to support that format in the future. </p><br/>
 <p>Click <%= link_to 'HERE', new_image_path %> to try another </p>
+<% elsif @image.odometer_reading == 1000001 %>
+<p>We couldn't find the odometer in your image, but we to hope to support that format in the future. </p><br/>
+<p>Click <%= link_to 'HERE', new_image_path %> to try another </p>
 <% else %>
 <p>
   <strong>Oil Mileage:</strong>
