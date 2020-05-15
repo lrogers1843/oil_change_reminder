@@ -13,8 +13,7 @@ class ImageProcessingJob < ApplicationJob
 		# NotificationMailer.with(image: @image).first_notification.deliver_later(wait: 5.seconds)
 	end
 	
-	def process 
-		binding.pry
+	def process
 		@image.odometer_reading = odometer_reading 
 		@image.last_change = last_oil_change_mileage 
 		@image.oil_mileage = current_oil_mileage
