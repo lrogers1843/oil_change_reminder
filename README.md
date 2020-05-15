@@ -1,36 +1,5 @@
-# Oil change reminder
-
-## Getting Started
-After you have cloned this repo, run this setup script to set up your machine
-with the necessary dependencies to run and test this app:
-
-    % ./bin/setup
-
-It assumes you have a machine equipped with Ruby, Postgres, etc. If not, set up
-your machine with [this script].
-
-[this script]: https://github.com/thoughtbot/laptop
-
-After setting up, you can run the application using [Heroku Local]:
-
-    % heroku local
-
-[Heroku Local]: https://devcenter.heroku.com/articles/heroku-local
-
-## Guidelines
-Use the following guides for getting things done, programming well, and
-programming in style.
-
-* [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
-* [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
-* [Style](http://github.com/thoughtbot/guides/blob/master/style)
-
-## Deploying
-If you have previously run the `./bin/setup` script,
-you can deploy to staging and production with:
-
-    % ./bin/deploy staging
-    % ./bin/deploy production
+# Oil change reporter
+https://oil-change-reminder.herokuapp.com/images/new
 
 ## Process Log
 ### Setup with Suspenders Gem
@@ -143,12 +112,10 @@ once that's done, run heroku run rails db:prepare to include db mods that came f
 
 ### Photo Labels
 In app/jobs/image_processing_job.rb
-check if upload matches the "vehicle" check in google
+check if upload matches the "vehicle" or "gauge" check in google
 (https://cloud.google.com/vision/docs/labels)
 
 ### To-Do
-check if upload matches the "odometer" check in google
-(https://cloud.google.com/vision/docs/labels)
 restyle user views
 allow user logout
 turn create button white
