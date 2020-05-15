@@ -33,7 +33,7 @@ class ImageProcessingJob < ApplicationJob
 		@odometer_reading ||= 
 		if response_text == "empty response" #easy to find and address empty images like this
 			1000000
-		elsif @image_label_check == false #if image not vehicle or gauge
+		elsif image_label_check == false #if image not vehicle or gauge
 			1000001
 		else
 			j_num_strings = response_text.scan(/\D(\d\d*)\D/) #regex + capture to pull all nums as strings
